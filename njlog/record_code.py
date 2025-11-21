@@ -1,0 +1,45 @@
+import enum
+import ctypes as C
+
+#
+# imported from /scripts/api/log_RecordCode.jnc
+#
+
+class RecordCodeFlags(enum.IntEnum):
+    Foldable = 0x8000000000000000,
+
+
+class PartCodeFlags(enum.IntEnum):
+    MergeableBackward = 0x2000000000000000,
+    MergeableForward  = 0x4000000000000000,
+    Mergeable         = 0x6000000000000000,
+
+
+class StdRecordCode(enum.IntEnum):
+    Tx                = 0x01d47ff1fc334a10 | PartCodeFlags.Mergeable,
+    TxSep             = 0x01d47ff1fc334a10,
+    Rx                = 0x01d47ff1fc334a11 | PartCodeFlags.Mergeable,
+    RxSep             = 0x01d47ff1fc334a11,
+    TxRx              = 0x01d47ff1fc334a12 | PartCodeFlags.Mergeable,
+    TxRxSep           = 0x01d47ff1fc334a12,
+    PlainText         = 0x01d47ff1fc334a13 | PartCodeFlags.Mergeable,
+    PlainTextSep      = 0x01d47ff1fc334a13,
+    HyperText         = 0x01d47ff1fc334a14 | PartCodeFlags.Mergeable,
+    HyperTextSep      = 0x01d47ff1fc334a14,
+    Bin               = 0x01d47ff1fc334a15 | PartCodeFlags.Mergeable,
+    BinSep            = 0x01d47ff1fc334a15,
+    Error             = 0x01d47ff1fc334a16,
+    RetroColorize     = 0x01d47ff1fc334a17,
+    SessionStarted    = 0x01d47ff1fc334a18,
+    Break             = 0x01d47ff1fc334a19,
+    RxBufferFull      = 0x01d47ff1fc334a1a,
+    RxBufferFullLossy = 0x01d47ff1fc334a1b,
+    SyncId            = 0x01d47ff1fc334a1c,
+    Tx9               = 0x01d47ff1fc334a1d | PartCodeFlags.Mergeable,
+    Tx9Sep            = 0x01d47ff1fc334a1d,
+    Rx9               = 0x01d47ff1fc334a1e | PartCodeFlags.Mergeable,
+    Rx9Sep            = 0x01d47ff1fc334a1e,
+    TxRx9             = 0x01d47ff1fc334a1f | PartCodeFlags.Mergeable,
+    TxRx9Sep          = 0x01d47ff1fc334a1f,
+    Bin9              = 0x01d47ff1fc334a20 | PartCodeFlags.Mergeable,
+    Bin9Sep           = 0x01d47ff1fc334a21,
